@@ -1,5 +1,6 @@
 # JMEditText
 Android Custom Keyboard and Simple Text Editor
+
 Purpose
 The purpose of this project is to provide a working example a custom keyboard implementation along with a custom EditText object to connect to the keyboard.  The user may take the JMEdit.java and the JMKeyboardView.java classes and drop them into an Android project and then find them available as visual objects in Android Studio toolbox pallet.
 
