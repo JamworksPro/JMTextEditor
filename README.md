@@ -18,7 +18,7 @@ If you want all the bells and whistles of a full blown text editor (select text,
 
 To turn off the ability to select text with a gesture in Androids' TextView, use setTextIsSelectable(false) method.  To ensure that the built in blinking cursor is never displayed, use the setCursorVisible(false) method.
 
-Once the EditTexts' input type is set to NULL it is the applications responsibility to implement a functional text editor.  The EditText object in this project is the JMEdit class which is derived from the Android EditText object.  The navigation functionality is based on the design specified in the JMEdit.pdf document.
+Once the EditTexts' input type is set to NULL it is the applications responsibility to implement a functional text editor.  The EditText object in this project is the JMEdit class which is derived from the Android EditText object.  The navigation functionality is based on the design specified in the <b>JMEdit.pdf</b> document.
 
 <b>About the JMKeyboardView Custom Class</b><br>
 The JMKeyboardView is derived from the Android KeyboardView class.  The keys that compose the keyboard are defined in an XML file located in the apps res.XML source folder.  The setKeyboard method in the KeyboardView class is used to attach the XML defined keyboard to the KeyboardView. 
