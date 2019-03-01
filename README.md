@@ -1,6 +1,9 @@
 # JMEditText
 Android Custom Keyboard and Simple Text Editor
+Purpose
+The purpose of this project is to provide a working example a custom keyboard implementation along with a custom EditText object to connect to the keyboard.  The user may take the JMEdit.java and the JMKeyboardView.java classes and drop them into an Android project and then find them available as visual objects in Android Studio toolbox pallet.
 
+Motivation
 The reason I wrote this custom text editor and keyboard combination is because I found the existing Android solution was inadequate for my Algebraic Expression Based Calculator.  The existing Android solution is to implement an EditText object which by default invokes the built in soft keyboard for editing the text.  The input requirements for my calculator represent a significant subset of options provided by the built in soft keyboard.  So I need a custom keyboard that is customized to provide a set of keys for mathematical notation as well as navigation of the cursor in the EditText object.
 
 This is easy enough to do, however invoking the custom keyboard when the EditText object receives focus is a problem because Androids' EditText Object will ALWAYS invoke the built in soft keyboard.  There is one way and only one way I have found to prevent this, and this is to use its "setRawInputType" method to set the its input type to NULL.  (setRawInputType(InputType.TYPE_NULL);)
@@ -21,6 +24,3 @@ The JMKeyboardView is derived from the Android KeyboardView class.  The keys tha
 
 The custom JMKeyboardView class provides the SetEditText method to attach an EditText object that responds to the keystrokes.
 An OnKeyboardActionListener interface must be implemented in order to trap the keystrokes.  This interface is where the notification of new characters are sent to its attached EditText object.
-
-Purpose
-The purpose of this project is to provide a working example a custom keyboard implementation along with a custom EditText object to connect to the keyboard.  The user may take the JMEdit.java and the JMKeyboardView.java classes and drop them into an Android project and then find them available as visual objects in Android Studio toolbox pallet.
