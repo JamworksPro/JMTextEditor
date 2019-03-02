@@ -1,4 +1,4 @@
-# JMEditText
+# JMTextEditor
 Android Custom Keyboard and Simple Text Editor
 
 <b>Purpose</b><br>
