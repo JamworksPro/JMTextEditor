@@ -2,7 +2,7 @@
 Android Custom Keyboard and Simple Text Editor
 
 <b>Purpose</b><br>
-The purpose of this project is to provide a simple working example a custom keyboard implementation along with a custom EditText object to connect to the keyboard.  The user may take the <b>JMEdit.java</b> and the <b>JMKeyboardView.java</b> classes and drop them into an Android project and then find them available as visual objects in Android Studio toolbox pallet.
+The purpose of this project is to provide a simple working example of a custom keyboard implementation along with a custom EditText object to connect to the keyboard.  The user may take the <b>JMEdit.java</b> and the <b>JMKeyboardView.java</b> classes and drop them into an Android project and then find them available as visual objects in Android Studio toolbox pallet.
 
 <b>Motivation</b><br>
 The reason I wrote this custom text editor and keyboard combination is because I found the existing Android solution was inadequate for my Algebraic Expression Based Calculator.  The existing Android solution is to implement an EditText object which by default invokes the built in soft keyboard for editing the text.  The input requirements for my calculator represent a significant subset of options provided by the built in soft keyboard.  So I need a custom keyboard that is customized to provide a set of keys for mathematical notation as well as navigation of the cursor in the EditText object.
