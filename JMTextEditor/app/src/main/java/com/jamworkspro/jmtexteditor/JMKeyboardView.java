@@ -1,39 +1,61 @@
-package com.jamworkspro.jmtexteditor;
+package com.jamworkspro.jamworksxg2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.util.AttributeSet;
 import android.view.View;
+import java.util.List;
 
+@SuppressLint("AppCompatCustomView")
 public class JMKeyboardView extends KeyboardView
 {
-  Keyboard mKeyboard;
-  JMEdit mJMEdit;
-
-  public JMKeyboardView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
-  {
-    super(context, attrs,defStyleAttr,defStyleRes);
-  }
-
-  public JMKeyboardView(Context context, AttributeSet attrs, int defStyleAttr)
-  {
-    super(context, attrs, defStyleAttr);
-  }
+  JMEdit               m_JMEdit;
+  Keyboard             m_Keyboard;
+  List<Keyboard.Key>   m_Keys;
+  public Keyboard.Key  m_keyCapsLocks;
+  public boolean       m_CapsLockOn;
 
   public JMKeyboardView(Context context, AttributeSet attrs)
   {
     super(context, attrs);
 
+    m_Keyboard = new Keyboard(context, R.xml.jmkeyboard);
+    setKeyboard(m_Keyboard);
+
+    if(isInEditMode())
+    {
+      return;
+    }
+
     //Attach the keyboard to the view
-    mKeyboard = new Keyboard(context, R.xml.jmkeyboard);
-    setKeyboard(mKeyboard);
+    m_CapsLockOn = false;
+
+    m_Keys = m_Keyboard.getKeys();
+
+    int iSize = m_Keys.size();
+    for (int i=0;i<iSize;i++)
+    {
+      Keyboard.Key key = m_Keys.get(i);
+      if (key.label.equals("caps"))
+        m_keyCapsLocks = key;
+    }
 
     //Do not show the preview balloons
     setPreviewEnabled(false);
 
     //Install the key handler
-    setOnKeyboardActionListener(mOnKeyboardActionListener);
+    setOnKeyboardActionListener(m_OnKeyboardActionListener);
+    setOnFocusChangeListener(new OnFocusChangeListener()
+    {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus)
+      {
+        int i=0;
+      }
+    });
+
     showKeyboard();
   }
 
@@ -51,15 +73,16 @@ public class JMKeyboardView extends KeyboardView
 
   public void SetEditText(JMEdit e)
   {
-    mJMEdit = e;
+    m_JMEdit = e;
   }
 
-  public KeyboardView.OnKeyboardActionListener mOnKeyboardActionListener = new KeyboardView.OnKeyboardActionListener()
+  public KeyboardView.OnKeyboardActionListener m_OnKeyboardActionListener = new KeyboardView.OnKeyboardActionListener()
   {
     @Override public void onKey(int primaryCode, int[] keyCodes)
     {
       //Toast.makeText(getApplicationContext(),"onKey", Toast.LENGTH_SHORT).show();
-      mJMEdit.onNewCharacter(primaryCode);
+      if(m_JMEdit != null)
+        m_JMEdit.onNewCharacter(primaryCode);
     }
 
     @Override public void onPress(int arg0)
